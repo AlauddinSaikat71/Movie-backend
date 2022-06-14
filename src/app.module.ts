@@ -1,11 +1,17 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { MovieModule } from './movie/movie.module';
+import { ConfigModule } from '@nestjs/config';
+import { EventEmitterModule } from '@nestjs/event-emitter';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
-  imports: [MovieModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true, envFilePath: '.env' }),
+    EventEmitterModule.forRoot({
+      global: true,
+      wildcard: true,
+      delimiter: '.',
+    }),
+    DatabaseModule,
+  ],
 })
 export class AppModule {}
