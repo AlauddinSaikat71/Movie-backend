@@ -1,3 +1,4 @@
+export * from './decorators/match.decorator';
 export * from './filters/http-exception.filter';
 export * from './interceptors/movie-request-log.interceptor';
 export * from './interceptors/transform.interceptor';

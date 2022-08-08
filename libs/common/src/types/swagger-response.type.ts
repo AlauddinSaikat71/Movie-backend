@@ -43,7 +43,7 @@ export const SwaggerResponseType = <T>(
 ): Type<any> => createResponseType(clazz, isArray);
 
 /**
- * Swagger response mapper upg project.
+ * Swagger response mapper Movie App.
  *
  * @example
  * `@ApiOkResponse(getSwaggerResponseOptions(ModelDto))`

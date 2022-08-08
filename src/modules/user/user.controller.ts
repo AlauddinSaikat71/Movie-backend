@@ -4,6 +4,7 @@ import {
   TransformInterceptor,
 } from '@movie/common';
 import {
+  Body,
   Controller,
   HttpCode,
   HttpStatus,
@@ -12,19 +13,20 @@ import {
   UsePipes,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { MovieService } from './movie.service';
+import { CreateUserDTO } from './dtos/create-user.dto';
+import { UserService } from './user.service';
 
-@Controller('movie')
-@ApiTags('Movie APIs')
+@Controller('users')
+@ApiTags('User APIs')
 //@ApiGuard()
 @UsePipes(MOVIEValidationPipe)
 @UseInterceptors(TransformInterceptor, MOVIERequestLogInterceptor)
-export class MovieController {
-  constructor(private readonly movieService: MovieService) {}
+export class UserController {
+  constructor(private readonly userService: UserService) {}
 
-  @Post()
+  @Post('sign-up')
   @HttpCode(HttpStatus.OK)
-  public getMovie() {
-    return 1;
+  public createUser(@Body() body: CreateUserDTO) {
+    return this.userService.createUser(body);
   }
 }

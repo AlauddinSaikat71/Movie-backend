@@ -20,7 +20,10 @@ export class CassandraOptionFactoryService
     this.contactPoints = configService.get('CASSANDRA_HOST')
       ? configService.get<string>('CASSANDRA_HOST').split(',')
       : ['localhost'];
-    this.keyspace = configService.get('CASSANDRA_KEYSPACE', 'movie_db');
+    this.keyspace = configService.get(
+      'CASSANDRA_KEYSPACE',
+      'Alauddin_practice_db',
+    );
     this.user = configService.get('CASSANDRA_USER', 'Alauddin');
     this.password = configService.get('CASSANDRA_PASSWORD', 'Abirbura');
     this.authProvider = new auth.PlainTextAuthProvider(

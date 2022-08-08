@@ -5,5 +5,9 @@
   "testRegex": ".e2e-spec.ts$",
   "transform": {
     "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "moduleNameMapper": {
+    "@movie/common/(.*)": "<rootDir>/../libs/common/src/$1",
+    "@movie/common": "<rootDir>/../libs/common/src"
   }
 }
